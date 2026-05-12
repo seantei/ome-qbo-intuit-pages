@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>QuickBooks Connection</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #17212b;
+      background: #f7f9fb;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    main {
+      width: min(680px, calc(100vw - 40px));
+      background: #ffffff;
+      border: 1px solid #d8e0e7;
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(19, 37, 53, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0 0 14px;
+      line-height: 1.5;
+    }
+
+    code {
+      display: block;
+      overflow-wrap: anywhere;
+      padding: 12px;
+      border-radius: 6px;
+      background: #eef3f7;
+      color: #0d334c;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>QuickBooks connection received</h1>
+    <p id="status">Forwarding this approval to the local invoice connector.</p>
+    <p id="manual-help" hidden>If forwarding does not complete, return to Codex and use this local callback URL.</p>
+    <code id="manual-url" hidden></code>
+  </main>
+
+  <script>
+    (function () {
+      var status = document.getElementById("status");
+      var manualHelp = document.getElementById("manual-help");
+      var manualUrl = document.getElementById("manual-url");
+      var params = window.location.search || "";
+
+      if (!params) {
+        status.textContent = "No QuickBooks authorization data was included.";
+        return;
+      }
+
+      var target = "http://127.0.0.1:8750/callback" + params;
+      manualUrl.textContent = target;
+
+      window.location.replace(target);
+
+      window.setTimeout(function () {
+        status.textContent = "The local connector did not open automatically.";
+        manualHelp.hidden = false;
+        manualUrl.hidden = false;
+      }, 2500);
+    }());
+  </script>
+</body>
+</html>

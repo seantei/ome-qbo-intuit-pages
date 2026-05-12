@@ -9,5 +9,6 @@ Intended public URLs after hosting:
 - End user license agreement: `/eula.html`
 - Connect/reconnect URL: `/connect.html`
 - Disconnect URL: `/disconnect.html`
+- OAuth callback bridge: `/oauth-callback.html`
 
 The pages intentionally contain no secrets, tokens, invoice PDFs, customer records, or QuickBooks data.
