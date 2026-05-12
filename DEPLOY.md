@@ -35,3 +35,9 @@ Validation completed locally on May 12, 2026:
 - Home page served over local HTTP and included the read-only reconciliation purpose.
 - Privacy page served over local HTTP and included the public contact email.
 - HTML parser accepted all HTML files.
+
+Published on May 12, 2026:
+
+- Repository: `https://github.com/seantei/ome-qbo-intuit-pages`
+- GitHub Pages: `https://seantei.github.io/ome-qbo-intuit-pages/`
+- GitHub Pages HTTPS enforced.
